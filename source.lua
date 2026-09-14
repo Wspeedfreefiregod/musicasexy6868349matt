@@ -224,6 +224,9 @@ function library:Load(opts)
         BackgroundColor3 = Color3.fromRGB(255, 255, 255),
         Parent = venuslib
     })
+	
+	library.holder = holder
+	library.venuslib = venuslib
 
     utility.create("TextLabel", {
         Size = UDim2.new(0, 1, 1, 0),
@@ -247,6 +250,8 @@ function library:Load(opts)
         BackgroundColor3 = theme.MainFrame,
         Parent = holder
     })
+
+	library.mainFrame = main
 
     utility.create("UICorner", {
         CornerRadius = UDim.new(0, 12),
@@ -2704,3 +2709,139 @@ function library:Load(opts)
 end
 
 return library
+
+local TweenService = game:GetService("TweenService")
+local CoreGui = game:GetService("CoreGui")
+local UserInputService = game:GetService("UserInputService")
+
+local BUTTON_IMAGE = "rbxassetid://132799767177868"
+
+local floatGui = Instance.new("ScreenGui")
+floatGui.Name = "RiseHubButton"
+floatGui.ResetOnSpawn = false
+floatGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+floatGui.Parent = CoreGui
+
+local floatBtn = Instance.new("ImageButton")
+floatBtn.Name = "RiseButton"
+floatBtn.Size = UDim2.new(0, 60, 0, 60)
+floatBtn.Position = UDim2.new(0, 20, 0.5, -30)
+floatBtn.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+floatBtn.BorderSizePixel = 0
+floatBtn.AutoButtonColor = false
+floatBtn.Image = BUTTON_IMAGE
+floatBtn.ScaleType = Enum.ScaleType.Fit
+floatBtn.Parent = floatGui
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(1, 0)
+corner.Parent = floatBtn
+
+local stroke = Instance.new("UIStroke")
+stroke.Thickness = 2
+stroke.Color = Color3.fromRGB(138, 43, 226)
+stroke.Parent = floatBtn
+
+local padding = Instance.new("UIPadding")
+padding.PaddingTop = UDim.new(0, 10)
+padding.PaddingBottom = UDim.new(0, 10)
+padding.PaddingLeft = UDim.new(0, 10)
+padding.PaddingRight = UDim.new(0, 10)
+padding.Parent = floatBtn
+
+local holder = library.holder
+local mainFrame = library.mainFrame
+
+local uiScale = Instance.new("UIScale")
+uiScale.Scale = 1
+uiScale.Parent = holder
+
+local dragging, dragStart, startPos
+
+floatBtn.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = input.Position
+        startPos = floatBtn.Position
+    end
+end)
+
+floatBtn.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = false
+    end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+    if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+        local delta = input.Position - dragStart
+        floatBtn.Position = UDim2.new(
+            startPos.X.Scale, startPos.X.Offset + delta.X,
+            startPos.Y.Scale, startPos.Y.Offset + delta.Y
+        )
+    end
+end)
+
+floatBtn.MouseEnter:Connect(function()
+    TweenService:Create(floatBtn, TweenInfo.new(0.2), {
+        Size = UDim2.new(0, 68, 0, 68),
+        Position = floatBtn.Position - UDim2.new(0, 4, 0, 4)
+    }):Play()
+    TweenService:Create(stroke, TweenInfo.new(0.2), {
+        Color = Color3.fromRGB(180, 100, 255)
+    }):Play()
+end)
+
+floatBtn.MouseLeave:Connect(function()
+    TweenService:Create(floatBtn, TweenInfo.new(0.2), {
+        Size = UDim2.new(0, 60, 0, 60),
+        Position = floatBtn.Position + UDim2.new(0, 4, 0, 4)
+    }):Play()
+    TweenService:Create(stroke, TweenInfo.new(0.2), {
+        Color = Color3.fromRGB(138, 43, 226)
+    }):Play()
+end)
+
+local isOpen = true
+
+local function openHub()
+    if isOpen then return end
+    isOpen = true
+
+    holder.Visible = true
+    uiScale.Scale = 0.5
+
+    TweenService:Create(uiScale, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+        Scale = 1
+    }):Play()
+
+    TweenService:Create(floatBtn, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+        Rotation = 0
+    }):Play()
+end
+
+local function closeHub()
+    if not isOpen then return end
+    isOpen = false
+
+    local tween = TweenService:Create(uiScale, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+        Scale = 0.5
+    })
+
+    tween.Completed:Connect(function()
+        holder.Visible = false
+    end)
+    tween:Play()
+	
+    TweenService:Create(floatBtn, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+        Rotation = 180
+    }):Play()
+end
+
+floatBtn.MouseButton1Click:Connect(function()
+    if isOpen then
+        closeHub()
+    else
+        openHub()
+    end
+end)
