@@ -313,7 +313,7 @@ function library:Load(opts)
             BackgroundColor3 = toggled and theme.TabToggleEnabled or theme.TabToggleDisabled,
             Size = UDim2.new(0, 52, 1, 0),
             FontSize = Enum.FontSize.Size12,
-            TextSize = 12,
+            TextSize = 15,
             TextColor3 = toggled and theme.EnabledText or theme.DisabledText,
             Text = name,
             Font = Enum.Font.Gotham,
@@ -351,7 +351,7 @@ function library:Load(opts)
         utility.create("UIListLayout", {
             FillDirection = Enum.FillDirection.Horizontal,
             SortOrder = Enum.SortOrder.LayoutOrder,
-            Padding = UDim.new(0, 6),
+            Padding = UDim.new(0, 10),
             Parent = tab
         })
         
@@ -366,7 +366,7 @@ function library:Load(opts)
 
         local column1list = utility.create("UIListLayout", {
             SortOrder = Enum.SortOrder.LayoutOrder,
-            Padding = UDim.new(0, 6),
+            Padding = UDim.new(0, 10),
             Parent = column1
         })
 
@@ -386,7 +386,7 @@ function library:Load(opts)
 
         local column2list = utility.create("UIListLayout", {
             SortOrder = Enum.SortOrder.LayoutOrder,
-            Padding = UDim.new(0, 6),
+            Padding = UDim.new(0, 10),
             Parent = column2
         })
 
@@ -459,7 +459,7 @@ function library:Load(opts)
                 Position = UDim2.new(0, 8, 0, 4),
                 BackgroundColor3 = Color3.fromRGB(255, 255, 255),
                 FontSize = Enum.FontSize.Size12,
-                TextSize = 12,
+                TextSize = 15,
                 TextColor3 = theme.TextColor,
                 Text = name,
                 Font = Enum.Font.Gotham,
@@ -476,7 +476,7 @@ function library:Load(opts)
 
             local sectionContentList = utility.create("UIListLayout", {
                 SortOrder = Enum.SortOrder.LayoutOrder,
-                Padding = UDim.new(0, 6),
+                Padding = UDim.new(0, 10),
                 Parent = sectionContent
             })
 
@@ -498,11 +498,11 @@ function library:Load(opts)
             function sectionTypes:Label(text)
                 local label = utility.create("TextLabel", {
                     ZIndex = 6,
-                    Size = UDim2.new(1, 0, 0, 10),
+                    Size = UDim2.new(1, 0, 0, 18),
                     BackgroundTransparency = 1,
                     Position = UDim2.new(1, 5, 0, 0),
                     FontSize = Enum.FontSize.Size12,
-                    TextSize = 12,
+                    TextSize = 15,
                     Text = text,
                     TextColor3 = theme.TextColor,
                     Font = Enum.Font.Gotham,
@@ -531,10 +531,10 @@ function library:Load(opts)
 
                 local button = utility.create("TextButton", {
                     ZIndex = 6,
-                    Size = UDim2.new(1, 0, 0, 16),
+                    Size = UDim2.new(1, 0, 0, 26),
                     BackgroundColor3 = theme.Button,
                     FontSize = Enum.FontSize.Size12,
-                    TextSize = 12,
+                    TextSize = 15,
                     Text = name,
                     TextColor3 = theme.TextColor,
                     Font = Enum.Font.Gotham,
@@ -584,7 +584,7 @@ function library:Load(opts)
                 local mouseOver = false
 
                 local toggle = utility.create("TextButton", {
-                    Size = UDim2.new(1, 0, 0, 10),
+                    Size = UDim2.new(1, 0, 0, 18),
                     BackgroundTransparency = 1,
                     FontSize = Enum.FontSize.Size14,
                     TextSize = 14,
@@ -595,7 +595,7 @@ function library:Load(opts)
 
                 local icon = utility.create("Frame", {
                     ZIndex = 6,
-                    Size = UDim2.new(0, 10, 0, 10),
+                    Size = UDim2.new(0, 18, 0, 18),
                     BackgroundColor3 = theme.ToggleDisabled,
                     Parent = toggle
                 })
@@ -612,7 +612,7 @@ function library:Load(opts)
                     Position = UDim2.new(1, 5, 0, 0),
                     BackgroundColor3 = Color3.fromRGB(255, 255, 255),
                     FontSize = Enum.FontSize.Size12,
-                    TextSize = 12,
+                    TextSize = 15,
                     TextColor3 = theme.DisabledText,
                     Text = name,
                     Font = Enum.Font.Gotham,
@@ -681,11 +681,11 @@ function library:Load(opts)
 
                 local box = utility.create("TextBox", {
                     ZIndex = 6,
-                    Size = UDim2.new(1, 0, 0, 16),
+                    Size = UDim2.new(1, 0, 0, 26),
                     BackgroundColor3 = theme.Box,
                     PlaceholderColor3 = Color3.fromRGB(180, 180, 180),
                     FontSize = Enum.FontSize.Size12,
-                    TextSize = 12,
+                    TextSize = 15,
                     TextColor3 = theme.TextColor,
                     Text = "",
                     Font = Enum.Font.Gotham,
@@ -766,7 +766,7 @@ function library:Load(opts)
 
                 local slider = utility.create("Frame", {
                     ZIndex = 6,
-                    Size = UDim2.new(1, 0, 0, 16),
+                    Size = UDim2.new(1, 0, 0, 26),
                     ClipsDescendants = true,
                     BackgroundColor3 = theme.Slider,
                     Parent = sectionContent
@@ -795,7 +795,7 @@ function library:Load(opts)
                     BackgroundTransparency = 1,
                     BackgroundColor3 = Color3.fromRGB(255, 255, 255),
                     FontSize = Enum.FontSize.Size12,
-                    TextSize = 12,
+                    TextSize = 15,
                     TextColor3 = theme.TextColor,
                     Text = name .. ": " .. default .. valueType,
                     Font = Enum.Font.Gotham,
@@ -901,10 +901,10 @@ function library:Load(opts)
 
                 local dropdown = utility.create("TextButton", {
                     ZIndex = 6,
-                    Size = UDim2.new(1, 0, 0, 16),
+                    Size = UDim2.new(1, 0, 0, 26),
                     BackgroundColor3 = theme.Dropdown,
                     FontSize = Enum.FontSize.Size12,
-                    TextSize = 12,
+                    TextSize = 15,
                     TextColor3 = theme.TextColor,
                     Text = "",
                     Font = Enum.Font.Gotham,
@@ -923,7 +923,7 @@ function library:Load(opts)
                     Position = UDim2.new(0, 5, 0, 0),
                     BackgroundColor3 = Color3.fromRGB(255, 255, 255),
                     FontSize = Enum.FontSize.Size12,
-                    TextSize = 12,
+                    TextSize = 15,
                     TextColor3 = default and theme.EnabledText or theme.DisabledText,
                     Text = default or "NONE",
                     Font = Enum.Font.Gotham,
@@ -995,11 +995,11 @@ function library:Load(opts)
                 for i, v in next, contentTable do
                     local option = utility.create("TextButton", {
                         ZIndex = 11,
-                        Size = UDim2.new(1, 0, 0, 16),
+                        Size = UDim2.new(1, 0, 0, 26),
                         BackgroundTransparency = 1,
                         BackgroundColor3 = Color3.fromRGB(255, 255, 255),
                         FontSize = Enum.FontSize.Size12,
-                        TextSize = 12,
+                        TextSize = 15,
                         TextColor3 = v == default and theme.EnabledText or theme.DisabledText,
                         Text = v,
                         Font = Enum.Font.Gotham,
@@ -1223,11 +1223,11 @@ function library:Load(opts)
 
                     local option = utility.create("TextButton", {
                         ZIndex = 11,
-                        Size = UDim2.new(1, 0, 0, 16),
+                        Size = UDim2.new(1, 0, 0, 26),
                         BackgroundTransparency = 1,
                         BackgroundColor3 = Color3.fromRGB(255, 255, 255),
                         FontSize = Enum.FontSize.Size12,
-                        TextSize = 12,
+                        TextSize = 15,
                         TextColor3 = theme.DisabledText,
                         Text = opt,
                         Font = Enum.Font.Gotham,
@@ -1383,11 +1383,11 @@ function library:Load(opts)
                     for i, v in next, contentTable do
                         local option = utility.create("TextButton", {
                             ZIndex = 11,
-                            Size = UDim2.new(1, 0, 0, 16),
+                            Size = UDim2.new(1, 0, 0, 26),
                             BackgroundTransparency = 1,
                             BackgroundColor3 = Color3.fromRGB(255, 255, 255),
                             FontSize = Enum.FontSize.Size12,
-                            TextSize = 12,
+                            TextSize = 15,
                             TextColor3 = v == default and theme.EnabledText or theme.DisabledText,
                             Text = v,
                             Font = Enum.Font.Gotham,
@@ -1578,11 +1578,11 @@ function library:Load(opts)
 
                 local keybind = utility.create("TextButton", {
                     ZIndex = 6,
-                    Size = UDim2.new(1, 0, 0, 10),
+                    Size = UDim2.new(1, 0, 0, 18),
                     BackgroundTransparency = 1,
                     BackgroundColor3 = Color3.fromRGB(255, 255, 255),
                     FontSize = Enum.FontSize.Size12,
-                    TextSize = 12,
+                    TextSize = 15,
                     TextColor3 = theme.TextColor,
                     Text = "Keybind",
                     Font = Enum.Font.Gotham,
@@ -1597,7 +1597,7 @@ function library:Load(opts)
                     Position = UDim2.new(1, -1, 0, 0),
                     BackgroundColor3 = Color3.fromRGB(255, 255, 255),
                     FontSize = Enum.FontSize.Size12,
-                    TextSize = 12,
+                    TextSize = 15,
                     TextColor3 = default and theme.EnabledText or theme.DisabledText,
                     Text = default and (keys[default] or tostring(default):gsub("Enum.KeyCode.", "")) or "NONE",
                     Font = Enum.Font.Gotham,
@@ -1745,14 +1745,14 @@ function library:Load(opts)
                 }
 
                 local toggleKeybind = utility.create("TextButton", {
-                    Size = UDim2.new(1, 0, 0, 10),
+                    Size = UDim2.new(1, 0, 0, 18),
                     BackgroundTransparency = 1,
                     Parent = sectionContent
                 })
 
                 local icon = utility.create("Frame", {
                     ZIndex = 6,
-                    Size = UDim2.new(0, 10, 0, 10),
+                    Size = UDim2.new(0, 18, 0, 18),
                     BackgroundColor3 = theme.ToggleDisabled,
                     Parent = toggleKeybind
                 })
@@ -1769,7 +1769,7 @@ function library:Load(opts)
                     Position = UDim2.new(1, 5, 0, 0),
                     BackgroundColor3 = Color3.fromRGB(255, 255, 255),
                     FontSize = Enum.FontSize.Size12,
-                    TextSize = 12,
+                    TextSize = 15,
                     TextColor3 = theme.DisabledText,
                     Text = name,
                     Font = Enum.Font.Gotham,
@@ -1784,7 +1784,7 @@ function library:Load(opts)
                     Position = UDim2.new(1, -1, 0, 0),
                     BackgroundColor3 = Color3.fromRGB(255, 255, 255),
                     FontSize = Enum.FontSize.Size12,
-                    TextSize = 12,
+                    TextSize = 15,
                     TextColor3 = default and theme.EnabledText or theme.DisabledText,
                     Text = default and (keys[default] or tostring(default):gsub("Enum.KeyCode.", "")) or "NONE",
                     Font = Enum.Font.Gotham,
@@ -1927,11 +1927,11 @@ function library:Load(opts)
 
                 local colorPicker = utility.create("TextButton", {
                     ZIndex = 6,
-                    Size = UDim2.new(1, 0, 0, 10),
+                    Size = UDim2.new(1, 0, 0, 18),
                     BackgroundTransparency = 1,
                     BackgroundColor3 = Color3.fromRGB(255, 255, 255),
                     FontSize = Enum.FontSize.Size12,
-                    TextSize = 12,
+                    TextSize = 15,
                     TextColor3 = theme.TextColor,
                     Text = name,
                     Font = Enum.Font.Gotham,
@@ -1941,7 +1941,7 @@ function library:Load(opts)
                 
                 local icon = utility.create("Frame", {
                     ZIndex = 6,
-                    Size = UDim2.new(0, 10, 0, 10),
+                    Size = UDim2.new(0, 18, 0, 18),
                     Position = UDim2.new(1, -10, 0, 0),
                     BackgroundColor3 = default,
                     Parent = colorPicker
@@ -2054,7 +2054,7 @@ function library:Load(opts)
                     BackgroundColor3 = theme.ColorPickerBoxes,
                     PlaceholderColor3 = Color3.fromRGB(180, 180, 180),
                     FontSize = Enum.FontSize.Size12,
-                    TextSize = 12,
+                    TextSize = 15,
                     TextColor3 = theme.TextColor,
                     Text = tostring(math.floor(default.R * 255)) .. ", " .. tostring(math.floor(default.G * 255)) .. ", " .. tostring(math.floor(default.B * 255)),
                     ClearTextOnFocus = false,
@@ -2075,7 +2075,7 @@ function library:Load(opts)
                     BackgroundColor3 = theme.ColorPickerBoxes,
                     PlaceholderColor3 = Color3.fromRGB(180, 180, 180),
                     FontSize = Enum.FontSize.Size12,
-                    TextSize = 12,
+                    TextSize = 15,
                     TextColor3 = theme.TextColor,
                     Text = utility.rgb_to_hex(default),
                     ClearTextOnFocus = false,
@@ -2293,7 +2293,7 @@ function library:Load(opts)
                 local mouseOver = false
 
                 local toggleColorPicker = utility.create("TextButton", {
-                    Size = UDim2.new(1, 0, 0, 10),
+                    Size = UDim2.new(1, 0, 0, 18),
                     BackgroundTransparency = 1,
                     FontSize = Enum.FontSize.Size14,
                     TextSize = 14,
@@ -2304,7 +2304,7 @@ function library:Load(opts)
 
                 local icon = utility.create("Frame", {
                     ZIndex = 6,
-                    Size = UDim2.new(0, 10, 0, 10),
+                    Size = UDim2.new(0, 18, 0, 18),
                     BackgroundColor3 = theme.ToggleDisabled,
                     Parent = toggleColorPicker
                 })
@@ -2321,7 +2321,7 @@ function library:Load(opts)
                     Position = UDim2.new(1, 5, 0, 0),
                     BackgroundColor3 = Color3.fromRGB(255, 255, 255),
                     FontSize = Enum.FontSize.Size12,
-                    TextSize = 12,
+                    TextSize = 15,
                     TextColor3 = theme.DisabledText,
                     Text = name,
                     Font = Enum.Font.Gotham,
@@ -2360,7 +2360,7 @@ function library:Load(opts)
 
                 local colorPickerIcon = utility.create("TextButton", {
                     ZIndex = 6,
-                    Size = UDim2.new(0, 10, 0, 10),
+                    Size = UDim2.new(0, 18, 0, 18),
                     Position = UDim2.new(1, -10, 0, 0),
                     BackgroundColor3 = default,
                     Text = "",
@@ -2474,7 +2474,7 @@ function library:Load(opts)
                     BackgroundColor3 = theme.ColorPickerBoxes,
                     PlaceholderColor3 = Color3.fromRGB(180, 180, 180),
                     FontSize = Enum.FontSize.Size12,
-                    TextSize = 12,
+                    TextSize = 15,
                     TextColor3 = theme.TextColor,
                     Text = tostring(math.floor(default.R * 255)) .. ", " .. tostring(math.floor(default.G * 255)) .. ", " .. tostring(math.floor(default.B * 255)),
                     ClearTextOnFocus = false,
@@ -2495,7 +2495,7 @@ function library:Load(opts)
                     BackgroundColor3 = theme.ColorPickerBoxes,
                     PlaceholderColor3 = Color3.fromRGB(180, 180, 180),
                     FontSize = Enum.FontSize.Size12,
-                    TextSize = 12,
+                    TextSize = 15,
                     TextColor3 = theme.TextColor,
                     Text = utility.rgb_to_hex(default),
                     ClearTextOnFocus = false,
